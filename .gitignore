@@ -1,3 +1,7 @@
 trash/
 receiver_v4/certs/
+receiver_v5/certs/
+receiver_v6/certs/
+receiver_v7/certs/
+receiver_v8/certs/
 sender_v4/certs/
