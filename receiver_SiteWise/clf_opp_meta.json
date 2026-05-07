@@ -1,0 +1,38 @@
+{
+  "feature_names": [
+    "uu_deadline_met_frac",
+    "pc5_deadline_met_frac",
+    "delta_dmf",
+    "max_dmf",
+    "min_dmf",
+    "p_uu",
+    "p_pc5",
+    "p_e2e",
+    "delta_p",
+    "delta_jit_norm",
+    "delta_d_norm",
+    "delta_r_roll3",
+    "consecutive_freeze_epochs",
+    "both_active",
+    "w_eff_curr",
+    "scheduler_id",
+    "speed_mps",
+    "dist_nearest_rsu_m",
+    "pred_rsu_change_flag"
+  ],
+  "n_features": 19,
+  "theta_o": 0.3,
+  "rho_min": 0.1,
+  "label_def": "y=1 if both_active[t+1] AND rho_min<=rho_uu[t+1]<=1-rho_min",
+  "output_usage": "o_t = predict_proba(X)[1]; steer if o_t >= theta_o",
+  "controller": {
+    "lambda_l": 0.3,
+    "lambda_s": 0.5,
+    "epsilon": 0.3,
+    "s_t_fixed": 1.0,
+    "formula": "delta=clip(lambda_l*(r_pc5-r_uu)+lambda_s*s_t, -eps, +eps); w_til=clip(w_eff+delta, 0, 1)"
+  },
+  "val_auc": 0.9889391451780036,
+  "val_pr_auc": 0.9842519754566383,
+  "val_opp_rate": 0.396035549002744
+}
